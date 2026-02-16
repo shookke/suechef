@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Relational Database for Users, Recipes, and Menus
+  db:
+    image: postgres:15-alpine
+    container_name: suechef-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
+      POSTGRES_DB: ${DB_NAME:-suechef}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Graph Database for Advanced Recommendations
+  neo4j:
+    image: neo4j:5-community
+    container_name: suechef-neo4j
+    restart: always
+    ports:
+      - "7474:7474" # HTTP UI
+      - "7687:7687" # Bolt Protocol
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:-password123}
+    volumes:
+      - neo4j_data:/data
+
+  # Cache and Message Broker
+  redis:
+    image: redis:7-alpine
+    container_name: suechef-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:
+  neo4j_data:

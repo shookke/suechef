@@ -1,0 +1,12 @@
+[package]
+name = "ingestion-crate"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core-crate = { path = "../core" }
+reqwest = { version = "0.11", features = ["json"] }
+scraper = "0.18"
+tokio = { workspace = true }
+serde = { workspace = true }
+tracing = { workspace = true }

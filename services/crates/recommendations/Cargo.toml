@@ -1,0 +1,11 @@
+[package]
+name = "recommendations-crate"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core-crate = { path = "../core" }
+neo4rs = { workspace = true }
+serde = { workspace = true }
+uuid = { workspace = true }
+tokio = { workspace = true }

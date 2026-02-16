@@ -1,0 +1,10 @@
+[package]
+name = "scheduler-crate"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core-crate = { path = "../core" }
+tokio = { workspace = true, features = ["rt", "time"] }
+chrono = { workspace = true }
+tracing = { workspace = true }

@@ -1,0 +1,13 @@
+[package]
+name = "users-crate"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core-crate = { path = "../core" }
+sqlx = { workspace = true }
+serde = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+argon2 = "0.5"
+jsonwebtoken = "9.2"
